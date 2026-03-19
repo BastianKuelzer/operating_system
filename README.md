@@ -1,6 +1,6 @@
-# 🤖 GitHub Operating System
+# 🤖 My Operating System
 
-A personal AI-powered operating system built on Claude — combining autonomous agents, curated knowledge, and active projects to get things done faster and smarter.
+A personal AI-powered operating system combining autonomous agents, curated knowledge, and active projects to get things done faster and smarter.
 
 ---
 
@@ -41,6 +41,3 @@ Active and past projects built with or managed through this system.
 |---------|-------------|--------|
 | 🌀 [**Project Fusion — Product Coaching**](./Project_Fusion/) | A coaching framework built around the six core leverages that separate great PMs from good ones: Leadership Buy-in, Team Empowerment, Needle-Moving Work, Focused Work, Product Intuition, and PM Leadership. | Active |
 
----
-
-> Built with [Claude Code](https://claude.ai/claude-code) · Powered by Anthropic
