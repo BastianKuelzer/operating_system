@@ -23,7 +23,7 @@ Use the templates below. Only apply the template that matches the "$ARGUMENTS" t
 Use the context from existing tickets to match the team's style and terminology.
 Once the ticket content looks good, ask the user if they want to create it directly in Linear via the MCP tools.
 
-Tickets are always created as **Todo**, not backlog or triage.
+Tickets are always created as **Backlog**, not todo or triage.
 
 ---
 
