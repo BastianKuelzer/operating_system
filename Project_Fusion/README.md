@@ -4,7 +4,7 @@ A product coaching framework built around the six core leverages that separate g
 
 ---
 
-## Five Leverages of a Product Manager
+## Six Leverages of a Product Manager
 
 | # | Leverage | Core Idea |
 |---|----------|-----------|

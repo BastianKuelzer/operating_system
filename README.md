@@ -12,11 +12,11 @@ AI agents and skills that work alongside me as a team. Each skill is a focused c
 
 | Skill | Description |
 |-------|-------------|
-| 🎫 [**Linear Ticket Writer**](./linear-tickets_SKILL.md) | Creates structured Linear tickets (New Feature · Bug · Testing · Feedback When Testing) using standardized templates matched to the team's style. Fetches existing tickets for context and creates directly in Linear via MCP. |
-| ⚔️ [**Ticket Challenger**](./ticket-challenger_SKILL.md) | Reviews any Linear ticket as a senior product strategist. Challenges scope, defers non-essential criteria, and either simplifies the ticket or confirms it's ready to ship. Updates the ticket automatically if simplification is needed. |
-| 📊 [**Ticket Visualizer**](./ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, edge cases, and open questions — from a PM's perspective. |
-| 🎨 [**Figma**](./figma_SKILL.md) | Translates Linear tickets into Figma design briefs or directly creates frames, components, and annotations in Figma via MCP. Maps UI surfaces, states, and component checklists for dev handoff. |
-| 🗑️ [**Clear Desktop**](./clear-desktop_SKILL.md) | Moves all screenshot files (Screenshot / Bildschirmfoto) from the Desktop to the macOS Trash. |
+| 🎫 [**Linear Ticket Writer**](./Skills/linear-tickets_SKILL.md) | Creates structured Linear tickets (New Feature · Bug · Testing · Feedback When Testing) using standardized templates matched to the team's style. Fetches existing tickets for context and creates directly in Linear via MCP. |
+| ⚔️ [**Ticket Challenger**](./Skills/ticket-challenger_SKILL.md) | Reviews any Linear ticket as a senior product strategist. Challenges scope, defers non-essential criteria, and either simplifies the ticket or confirms it's ready to ship. Updates the ticket automatically if simplification is needed. |
+| 📊 [**Ticket Visualizer**](./Skills/ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, edge cases, and open questions — from a PM's perspective. |
+| 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or directly creates frames, components, and annotations in Figma via MCP. Maps UI surfaces, states, and component checklists for dev handoff. |
+| 🗑️ [**Clear Desktop**](./Skills/clear-desktop_SKILL.md) | Moves all screenshot files (Screenshot / Bildschirmfoto) from the Desktop to the macOS Trash. |
 
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code.
 
