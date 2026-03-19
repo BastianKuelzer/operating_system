@@ -4,9 +4,10 @@ A personal AI-powered operating system combining autonomous agents, curated know
 
 ---
 
-## 👥 My Team — Skills & Autonomous Agents
+## 👥 My AI Minions — Skills & Autonomous Agents
 
-AI agents and skills that work alongside me as a team. Each skill is a focused capability that can be triggered on demand.
+A squad of AI agents that get work done, learn from curated knowledge, and improve over time. + My human team can fork this repo, add their own skills and knowledge, and run the same AI team alongside me.  
+
 
 ### 🛠️ Skills
 
@@ -18,7 +19,7 @@ AI agents and skills that work alongside me as a team. Each skill is a focused c
 | 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or directly creates frames, components, and annotations in Figma via MCP. Maps UI surfaces, states, and component checklists for dev handoff. |
 | 🗑️ [**Clear Desktop**](./Skills/clear-desktop_SKILL.md) | Moves all screenshot files (Screenshot / Bildschirmfoto) from the Desktop to the macOS Trash. |
 
-> Each skill lives in its own `.md` file and can be triggered directly in Claude Code.
+> Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
 
 ---
 
