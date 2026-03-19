@@ -39,7 +39,7 @@ Active and past projects built with or managed through this system.
 
 | Project | Description | Status |
 |---------|-------------|--------|
-| *(add your projects here)* | | |
+| 🌀 [**Project Fusion — Product Coaching**](./Project_Fusion/) | A coaching framework built around the six core leverages that separate great PMs from good ones: Leadership Buy-in, Team Empowerment, Needle-Moving Work, Focused Work, Product Intuition, and PM Leadership. | Active |
 
 ---
 
