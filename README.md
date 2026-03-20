@@ -28,10 +28,9 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 
 A curated collection of frameworks, mental models, and references that inform how I work and build.
 
-- Prompt engineering patterns
-- Agent design principles
-- Workflow automation best practices
-- Domain knowledge across products, ops, and engineering
+| Topic | Description |
+|-------|-------------|
+| 👥 [**Team Performance & Leadership**](./Knowledge/team-performance.md) | Who I am as a leader, team archetypes, 6 levels of leadership, conflict patterns and solutions, and pressure calibration per person. |
 
 ---
 
