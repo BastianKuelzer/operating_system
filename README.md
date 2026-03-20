@@ -11,16 +11,28 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 
 ### 🛠️ Skills
 
+**🧑‍💼 Product Manager**
+
 | Skill | Description |
 |-------|-------------|
 | 🎫 [**Linear Ticket Writer**](./Skills/linear-tickets_SKILL.md) | Creates structured Linear tickets (New Feature · Bug · Testing · Feedback When Testing) using standardized templates matched to the team's style. Fetches existing tickets for context and creates directly in Linear via MCP. |
 | ⚔️ [**Ticket Challenger**](./Skills/ticket-challenger_SKILL.md) | Reviews any Linear ticket as a senior product strategist. Challenges scope, defers non-essential criteria, and either simplifies the ticket or confirms it's ready to ship. Updates the ticket automatically if simplification is needed. |
 | 📊 [**Ticket Visualizer**](./Skills/ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, edge cases, and open questions — from a PM's perspective. |
-| 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or directly creates frames, components, and annotations in Figma via MCP. Maps UI surfaces, states, and component checklists for dev handoff. |
-| 🗑️ [**Clear Desktop**](./Skills/clear-desktop_SKILL.md) | Moves all screenshot files (Screenshot / Bildschirmfoto) from the Desktop to the macOS Trash. |
 | 📋 [**Context Page**](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log with General (executive summary), Details (business logic), and Stages (MVP + iterations). It behaves similar to a PRD but comes after testing prototypes as handover to engineering. |
-| ⚡ [**AI Prototyping**](./Skills/ai-prototyping_SKILL.md) | Turns any input (Notion page, Figma design, competitor URL, or plain description) into 4 prototype arguments + 1 recommended version — each a copy-paste-ready prompt for v0, Google AI Studio, Bolt, or Lovable. |
 | 📋 [**Backlog Sorting**](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog for team Market Optimization using the Notion priority table as source of truth. Applies deterministic ordering rules across critical bugs, in-scope, and out-of-scope tickets. |
+
+**🎨 Designer**
+
+| Skill | Description |
+|-------|-------------|
+| 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or directly creates frames, components, and annotations in Figma via MCP. Maps UI surfaces, states, and component checklists for dev handoff. |
+| ⚡ [**AI Prototyping**](./Skills/ai-prototyping_SKILL.md) | Turns any input (Notion page, Figma design, competitor URL, or plain description) into 4 prototype arguments + 1 recommended version — each a copy-paste-ready prompt for v0, Google AI Studio, Bolt, or Lovable. |
+
+**🗂️ Organizer**
+
+| Skill | Description |
+|-------|-------------|
+| 🗑️ [**Clear Desktop**](./Skills/clear-desktop_SKILL.md) | Moves all screenshot files (Screenshot / Bildschirmfoto) from the Desktop to the macOS Trash. |
 
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
 
