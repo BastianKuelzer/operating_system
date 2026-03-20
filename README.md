@@ -19,8 +19,24 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 | 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or directly creates frames, components, and annotations in Figma via MCP. Maps UI surfaces, states, and component checklists for dev handoff. |
 | 🗑️ [**Clear Desktop**](./Skills/clear-desktop_SKILL.md) | Moves all screenshot files (Screenshot / Bildschirmfoto) from the Desktop to the macOS Trash. |
 | 📋 [**Context Page**](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log with General (executive summary), Details (business logic), and Stages (MVP + iterations). It behaves similar to a PRD but comes after testing prototypes as handover to engineering. |
+| ⚡ [**AI Prototyping**](./Skills/ai-prototyping_SKILL.md) | Turns any input (Notion page, Figma design, competitor URL, or plain description) into 4 prototype arguments + 1 recommended version — each a copy-paste-ready prompt for v0, Google AI Studio, Bolt, or Lovable. |
+| 📋 [**Backlog Sorting**](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog for team Market Optimization using the Notion priority table as source of truth. Applies deterministic ordering rules across critical bugs, in-scope, and out-of-scope tickets. |
 
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
+
+### 💻 Setup on a new laptop
+
+Clone this repo, then run the following to register all skills as `/` slash commands in Claude Code:
+
+```bash
+for f in ~/Desktop/Github_Operating_System/Skills/*_SKILL.md; do
+  name=$(basename "$f" _SKILL.md)
+  mkdir -p ~/.claude/skills/$name
+  ln -sf "$f" ~/.claude/skills/$name/SKILL.md
+done
+```
+
+This creates symlinks from `~/.claude/skills/` to the repo — so any updates you push are instantly available without re-running the setup.
 
 ---
 
