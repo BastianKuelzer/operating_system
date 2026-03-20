@@ -1,6 +1,6 @@
 # Team Performance & Leadership
 
-A framework for understanding yourself as a leader, reading your team, and creating the conditions for high performance.
+A bit about understanding me as a leader, reading a team, and creating the conditions for high performance.
 
 ---
 
