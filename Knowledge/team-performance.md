@@ -34,7 +34,7 @@ Understanding what motivates a person — what drives them to distinguish themse
 
 ---
 
-## Drivers: 6 Levels of Leadership
+## Drivers: 5 Levels of Leadership
 
 Leadership is not a single mode — it operates at different levels depending on what the team or situation needs. Effective leaders move deliberately between levels rather than defaulting to one.
 
@@ -89,12 +89,6 @@ Give the team the full picture so they can make good decisions without you.
 - Receive credit gracefully for good work.
 - Make it enjoyable.
 
-### 6. Strategy & Structure
-
-- Define the mode of collaboration (e.g. Kanban, retros).
-- Roadmapping and task management system.
-- Repeat the mission pitch over and over.
-- Focus and alignment on one priority — if you have several priorities, you have none.
 
 ---
 
