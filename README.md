@@ -24,19 +24,24 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
 
-### 💻 Setup on a new laptop
+### 💻 Setup on a new machine
 
-Clone this repo, then run the following to register all skills as `/` slash commands in Claude Code:
+Clone the repo anywhere you like, then run the setup script once:
 
 ```bash
-for f in ~/Desktop/Github_Operating_System/Skills/*_SKILL.md; do
-  name=$(basename "$f" _SKILL.md)
-  mkdir -p ~/.claude/skills/$name
-  ln -sf "$f" ~/.claude/skills/$name/SKILL.md
-done
+git clone <repo-url>
+cd <repo-folder>
+./setup.sh
 ```
 
-This creates symlinks from `~/.claude/skills/` to the repo — so any updates you push are instantly available without re-running the setup.
+This will:
+- Register all skills as `/skill-name` slash commands in Claude Code
+- Make all skills auto-trigger when Claude detects the right context
+- Install a `post-merge` git hook so any new skill added to the repo is wired up automatically after a `git pull`
+
+> Restart Claude Code after running the script to pick up the new slash commands.
+
+**How it works:** `setup.sh` creates symlinks from `~/.claude/skills/` and `.claude/commands/` to the `Skills/` folder in this repo. Updates pushed to a skill file are instantly live — no re-setup needed.
 
 ---
 

@@ -1,0 +1,1 @@
+/Users/bastiankulzer/Desktop/Github_Operating_System/Skills/clear-desktop_SKILL.md

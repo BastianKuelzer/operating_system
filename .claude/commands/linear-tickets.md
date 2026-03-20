@@ -1,0 +1,1 @@
+/Users/bastiankulzer/Desktop/Github_Operating_System/Skills/linear-tickets_SKILL.md
