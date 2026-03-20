@@ -1,6 +1,6 @@
 # 🤖 My Operating System
 
-A personal AI-powered operating system combining autonomous agents, curated knowledge, and active projects to get things done faster and smarter.
+A personal AI-powered operating system combining autonomous agents, curated knowledge, and active projects to get things done faster and smarter. From agents to my knowledge and even my value system, it is moving and evolving and this repo will change constantly.
 
 ---
 
