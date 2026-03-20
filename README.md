@@ -18,6 +18,7 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 | 📊 [**Ticket Visualizer**](./Skills/ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, edge cases, and open questions — from a PM's perspective. |
 | 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or directly creates frames, components, and annotations in Figma via MCP. Maps UI surfaces, states, and component checklists for dev handoff. |
 | 🗑️ [**Clear Desktop**](./Skills/clear-desktop_SKILL.md) | Moves all screenshot files (Screenshot / Bildschirmfoto) from the Desktop to the macOS Trash. |
+| 📋 [**Context Page**](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log with General (executive summary), Details (business logic), and Stages (MVP + iterations). It behaves similar to a PRD but comes after testing prototypes as handover to engineering. |
 
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
 
