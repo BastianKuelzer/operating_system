@@ -36,25 +36,6 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
 
-### 💻 Setup on a new machine
-
-Clone the repo anywhere you like, then run the setup script once:
-
-```bash
-git clone <repo-url>
-cd <repo-folder>
-./setup.sh
-```
-
-This will:
-- Register all skills as `/skill-name` slash commands in Claude Code
-- Make all skills auto-trigger when Claude detects the right context
-- Install a `post-merge` git hook so any new skill added to the repo is wired up automatically after a `git pull`
-
-> Restart Claude Code after running the script to pick up the new slash commands.
-
-**How it works:** `setup.sh` creates symlinks from `~/.claude/skills/` and `.claude/commands/` to the `Skills/` folder in this repo. Updates pushed to a skill file are instantly live — no re-setup needed.
-
 ---
 
 ## 🧠 My Knowledge
@@ -74,4 +55,25 @@ Active and past projects built with or managed through this system.
 | Project | Description | Status |
 |---------|-------------|--------|
 | 🌀 [**Project Fusion — Commercial Product Coaching**](./Project_Fusion/) | A coaching framework taught with principles not guidelines, built around the six core leverages that separate great PMs from good ones through a strong focus on building and sclaing commercial viable products: Leadership Buy-in, Team Empowerment, Needle-Moving Work, Focused Work, Product Intuition, and PM Leadership. | Active |
+
+---
+
+## 💻 Setup on a new machine
+
+Clone the repo anywhere you like, then run the setup script once:
+
+```bash
+git clone <repo-url>
+cd <repo-folder>
+./setup.sh
+```
+
+This will:
+- Register all skills as `/skill-name` slash commands in Claude Code
+- Make all skills auto-trigger when Claude detects the right context
+- Install a `post-merge` git hook so any new skill added to the repo is wired up automatically after a `git pull`
+
+> Restart Claude Code after running the script to pick up the new slash commands.
+
+**How it works:** `setup.sh` creates symlinks from `~/.claude/skills/` and `.claude/commands/` to the `Skills/` folder in this repo. Updates pushed to a skill file are instantly live — no re-setup needed.
 
