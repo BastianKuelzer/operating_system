@@ -30,7 +30,7 @@ A curated collection of frameworks, mental models, and references that inform ho
 
 | Topic | Description |
 |-------|-------------|
-| 👥 [**Team Performance & Leadership**](./Knowledge/team-performance.md) | Who I am as a leader, team archetypes, 6 levels of leadership, conflict patterns and solutions, and pressure calibration per person. |
+| 👥 [**Team Performance & Leadership**](./Knowledge/team-performance.md) | Who I am as a leader, team archetypes, 5 levels of leadership, conflict patterns and solutions, and pressure calibration per person. |
 
 ---
 
