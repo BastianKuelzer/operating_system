@@ -61,7 +61,6 @@ Give the team the full picture so they can make good decisions without you.
   - Ask: *What alternatives have you thought of? What happens if you do nothing? What can you do?*
   - If someone asks to go to a workshop, ask: *What do you expect from it?* Leave ownership on their side.
 - **Create an environment of trust.** Open discussions, support, and respect.
-- **Reward and penalty destroy ownership.** They take away the feeling of accountability.
 - **On evaluation:** It is subjective — acknowledge that. The employee may have a different perspective. Appreciate other opinions because you only have your subjective view. The evaluation tells a lot about your own values. *"Was Sie von mir denken, geht mich nichts an." — Terry Cole-Whittaker*
 - **Commitments:**
   - Only make them if you can fulfil them.
@@ -74,7 +73,7 @@ Give the team the full picture so they can make good decisions without you.
 ### 3. Coach
 
 - Let them reflect — ask questions, don't give answers.
-- Give impulses to be better, not instructions on what to do.
+- Give impulses to be better, not instructions on what to do (of course depends on the level of senority) 
 
 ### 4. Push
 
@@ -86,6 +85,7 @@ Give the team the full picture so they can make good decisions without you.
 
 - Team first.
 - Give credit to people publicly.
+- Give creidt to people when they are not present.
 - Receive credit gracefully for good work.
 - Make it enjoyable.
 
