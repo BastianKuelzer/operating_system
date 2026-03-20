@@ -6,7 +6,7 @@ A personal AI-powered operating system combining autonomous agents, curated know
 
 ## 👥 My AI Minions — Skills & Autonomous Agents
 
-A squad of AI agents that get work done, learn from curated knowledge, and improve over time. + My human team can fork this repo, add their own skills and knowledge, and run the same AI team alongside me.  
+A squad of AI agents that get work done, learn from curated knowledge, and improve over time. + My human team can use this repo, add their own skills and knowledge, and run the same AI team alongside me.  
 
 
 ### 🛠️ Skills
