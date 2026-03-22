@@ -1,0 +1,1 @@
+/Users/bastiankulzer/Desktop/Github_Operating_System/Skills/competitor-research_SKILL.md
