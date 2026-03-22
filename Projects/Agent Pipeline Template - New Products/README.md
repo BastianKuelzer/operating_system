@@ -1,4 +1,4 @@
-# 🔗 Agent Pipeline Template — New Product 
+# 🔗 Agent Pipeline Template — New Products
 
 A 5-agent pipeline that turns a new product idea into everything needed to build and sell it — automatically. One trigger, five specialized agents, zero dropped tasks.
 
