@@ -28,11 +28,6 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 | 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or creates frames, components, and annotations directly via MCP for dev handoff. | Creates hundreds of designs per design principles and user stories within minutes | Iterations needed afterwards ≥ 2 |
 | ⚡ [**AI Prototyping**](./Skills/ai-prototyping_SKILL.md) | Turns any input (Notion page, Figma design, competitor URL, or description) into 4 prototype arguments + 1 recommended version as copy-paste-ready prompts for v0, Google AI Studio, Bolt, or Lovable. | Builds prompts that create several fully functional front-end products within minutes | Logic missed in the prompt |
 
-**🗂️ Organizer**
-
-| Skill | Description |
-|-------|-------------|
-| 🗑️ [**Clear Desktop**](./Skills/clear-desktop_SKILL.md) | Moves all screenshot files (Screenshot / Bildschirmfoto) from the Desktop to the macOS Trash. |
 
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
 
