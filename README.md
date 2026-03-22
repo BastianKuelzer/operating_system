@@ -73,6 +73,8 @@ This will:
 - Make all skills auto-trigger when Claude detects the right context
 - Install a `post-merge` git hook so any new skill added to the repo is wired up automatically after a `git pull`
 
+Several MCP servers for Notion, Fireflies, Slack, Linear, and Figma also need to be configured separately.
+
 > Restart Claude Code after running the script to pick up the new slash commands.
 
 **How it works:** `setup.sh` creates symlinks from `~/.claude/skills/` and `.claude/commands/` to the `Skills/` folder in this repo. Updates pushed to a skill file are instantly live — no re-setup needed.
