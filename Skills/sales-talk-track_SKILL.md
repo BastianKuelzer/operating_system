@@ -21,7 +21,6 @@ The talk track must answer three things in plain language:
 
 - **Write for Sales, not for engineers.** No technical jargon without a plain explanation.
 - **Lead with the problem, never with features.** Every section must connect back to what the customer feels.
-- **Keep each section short enough to deliver in under 90 seconds.**
 - **Never fabricate data or customer examples.** Use `[INSERT: example]` placeholders where real data should go.
 - **This is a launch artifact, not a prospect-specific pitch.** Do not tailor to a named prospect.
 

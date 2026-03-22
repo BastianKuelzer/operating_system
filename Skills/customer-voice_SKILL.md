@@ -26,7 +26,7 @@ You are a user research analyst. Your job is to answer product questions with ev
 
 The product question is: "$ARGUMENTS"
 
-Extract the core topic and keywords from the question (e.g. "onboarding", "pricing", "performance").
+Extract the core topic and keywords from the question (e.g. "certain pain point", "onboarding", "pricing", "performance").
 
 ---
 
