@@ -13,20 +13,20 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 
 **🧑‍💼 Product Manager**
 
-| Skill | Description |
-|-------|-------------|
-| 🎫 [**Linear Ticket Writer**](./Skills/linear-tickets_SKILL.md) | Creates structured Linear tickets (New Feature · Bug · Testing · Feedback When Testing) using standardized templates matched to the team's style. Fetches existing tickets for context and creates directly in Linear via MCP. |
-| ⚔️ [**Ticket Challenger**](./Skills/ticket-challenger_SKILL.md) | Reviews any Linear ticket as a senior product strategist. Challenges scope, defers non-essential criteria, and either simplifies the ticket or confirms it's ready to ship. Updates the ticket automatically if simplification is needed. |
-| 📊 [**Ticket Visualizer**](./Skills/ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, edge cases, and open questions — from a PM's perspective. |
-| 📋 [**Context Page**](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log with General (executive summary), Details (business logic), and Stages (MVP + iterations). It behaves similar to a PRD but comes after testing prototypes as handover to engineering. |
-| 📋 [**Backlog Sorting**](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog for team Market Optimization using the Notion priority table as source of truth. Applies deterministic ordering rules across critical bugs, in-scope, and out-of-scope tickets. |
+| Skill | Description | Why | Performance Evaluation (Goal: 0) |
+|-------|-------------|-----|----------------------------------|
+| 🎫 [**Linear Ticket Writer**](./Skills/linear-tickets_SKILL.md) | Creates structured Linear tickets (New Feature · Bug · Testing · Feedback) using standardized templates matched to the team's style, with context from existing tickets. | Creates >100 well-defined tickets incl. edge cases in under 10 minutes | Follow-up questions from engineers · Requirements not implemented as intended |
+| ⚔️ [**Ticket Challenger**](./Skills/ticket-challenger_SKILL.md) | Reviews any Linear ticket as a senior product strategist — challenges scope, defers non-essentials, and simplifies or confirms readiness. | Prevents inferior customer experience and days of wasted work | Logic added back after implementation · Simplifications found after skill was invoked |
+| 📊 [**Ticket Visualizer**](./Skills/ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, and edge cases. | Visualizes complex ticket logic in seconds vs. 20 minutes manually | Logic flows missed in the diagram |
+| 📋 [**Context Page**](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log with executive summary, business logic, and MVP stages — a PRD-equivalent as handover to engineering. | Writes pages of condensed knowledge for engineering that would otherwise take days | Critical information ignored · Wrong information hallucinated · Incorrect output structure |
+| 📋 [**Backlog Sorting**](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog using the Notion priority table with deterministic ordering rules across critical bugs and in/out-of-scope tickets. | Engineering always knows current priorities — one skill call, any time, for any ticket | Manual backlog order adjustments needed |
 
 **🎨 Designer**
 
-| Skill | Description |
-|-------|-------------|
-| 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or directly creates frames, components, and annotations in Figma via MCP. Maps UI surfaces, states, and component checklists for dev handoff. |
-| ⚡ [**AI Prototyping**](./Skills/ai-prototyping_SKILL.md) | Turns any input (Notion page, Figma design, competitor URL, or plain description) into 4 prototype arguments + 1 recommended version — each a copy-paste-ready prompt for v0, Google AI Studio, Bolt, or Lovable. |
+| Skill | Description | Why | Performance Evaluation (Goal: 0) |
+|-------|-------------|-----|----------------------------------|
+| 🎨 [**Figma**](./Skills/figma_SKILL.md) | Translates Linear tickets into Figma design briefs or creates frames, components, and annotations directly via MCP for dev handoff. | Creates hundreds of designs per design principles and user stories within minutes | Iterations needed afterwards ≥ 2 |
+| ⚡ [**AI Prototyping**](./Skills/ai-prototyping_SKILL.md) | Turns any input (Notion page, Figma design, competitor URL, or description) into 4 prototype arguments + 1 recommended version as copy-paste-ready prompts for v0, Google AI Studio, Bolt, or Lovable. | Builds prompts that create several fully functional front-end products within minutes | Logic missed in the prompt |
 
 **🗂️ Organizer**
 
