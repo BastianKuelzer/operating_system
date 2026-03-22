@@ -47,7 +47,7 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 
 ## 🧠 My Knowledge
 
-A curated collection of frameworks, mental models, and references that inform how I work and build.
+A curated collection of frameworks, mental models, and references that inform how I work and build — and a sparring partner for problems that arise or decisions on how to move forward.
 
 | Topic | Description |
 |-------|-------------|
