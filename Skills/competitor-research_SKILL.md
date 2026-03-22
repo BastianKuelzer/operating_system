@@ -38,11 +38,7 @@ Wait for the response before proceeding.
 
 ## Step 2 — Access the Google Sheet
 
-Fetch the linked Google Sheet and read all competitor links from the relevant tab:
-
-- `Inspiration` argument → read links from the Inspiration tab
-- `Pricing` argument → read links from the Pricing tab
-- `Customers` argument → read links from the Customers tab
+Fetch the linked Google Sheet and read the full list of competitor links. There is one list of competitors — not separated by argument. Every competitor link applies to all arguments.
 
 If the sheet is not linked or inaccessible, ask the user:
 
