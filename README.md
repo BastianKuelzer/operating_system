@@ -61,8 +61,8 @@ Active and past projects built with or managed through this system.
 
 | Project | Description | Status |
 |---------|-------------|--------|
-| 🌀 [**Project Fusion — Commercial Product Coaching**](./Project_Fusion/) | A coaching framework taught with principles not guidelines, built around the six core leverages that separate great PMs from good ones through a strong focus on building and sclaing commercial viable products: Leadership Buy-in, Team Empowerment, Needle-Moving Work, Focused Work, Product Intuition, and PM Leadership. | Active |
-| 🔗 [**Agent Pipeline — New Product**](./Project_Agent_Pipeline/) | A 6-skill pipeline (Customer Voice → Competitor Research → AI Prototyping → Linear Ticket Writer → Context Page → Sales Talk Track) that turns a new product idea into customer evidence, a prototype, engineering tickets, a handover doc, and a sales pitch — automatically. | Template |
+| 🌀 [**Project Fusion — Commercial Product Coaching**](./Projects/Project_Fusion/) | A coaching framework taught with principles not guidelines, built around the six core leverages that separate great PMs from good ones through a strong focus on building and sclaing commercial viable products: Leadership Buy-in, Team Empowerment, Needle-Moving Work, Focused Work, Product Intuition, and PM Leadership. | Active |
+| 🔗 [**Agent Pipeline — New Product**](./Projects/Project_Agent_Pipeline/) | A 6-skill pipeline (Customer Voice → Competitor Research → AI Prototyping → Linear Ticket Writer → Context Page → Sales Talk Track) that turns a new product idea into customer evidence, a prototype, engineering tickets, a handover doc, and a sales pitch — automatically. | Template |
 
 ---
 

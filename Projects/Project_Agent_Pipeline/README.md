@@ -50,8 +50,8 @@ Input (Meeting / Briefing / Feature Request)
 
 | Skill | Output |
 |-------|--------|
-| [Customer Voice](../Skills/customer-voice_SKILL.md) | Structured evidence doc with quotes from customer feedback confirming the pain point |
-| [Competitor Research](../Skills/competitor-research_SKILL.md) | Competitor landscape: who has this, who doesn't, how they price it |
+| [Customer Voice](../../Skills/customer-voice_SKILL.md) | Structured evidence doc with quotes from customer feedback confirming the pain point |
+| [Competitor Research](../../Skills/competitor-research_SKILL.md) | Competitor landscape: who has this, who doesn't, how they price it |
 
 ---
 
@@ -88,10 +88,10 @@ Input (Meeting / Briefing / Feature Request)
 
 | Task | Skill |
 |------|-------|
-| Generate prototype prompt | [AI Prototyping](../Skills/ai-prototyping_SKILL.md) |
-| Write Linear tickets | [Linear Ticket Writer](../Skills/linear-tickets_SKILL.md) |
-| Write context page | [Context Page](../Skills/context-page_SKILL.md) |
-| Create sales talk track | [Sales Talk Track](../Skills/sales-talk-track_SKILL.md) |
+| Generate prototype prompt | [AI Prototyping](../../Skills/ai-prototyping_SKILL.md) |
+| Write Linear tickets | [Linear Ticket Writer](../../Skills/linear-tickets_SKILL.md) |
+| Write context page | [Context Page](../../Skills/context-page_SKILL.md) |
+| Create sales talk track | [Sales Talk Track](../../Skills/sales-talk-track_SKILL.md) |
 
 If no matching skill exists, Skill Scout flags the task as `No Skill Found` and drafts a new skill using `new-skill_SKILL.md`.
 
@@ -109,10 +109,10 @@ If no matching skill exists, Skill Scout flags the task as `No Skill Found` and 
 
 | Skill | Output |
 |-------|--------|
-| [AI Prototyping](../Skills/ai-prototyping_SKILL.md) | 4 prototype arguments + 1 recommended prompt, copy-paste ready for v0, Bolt, or Lovable |
-| [Linear Ticket Writer](../Skills/linear-tickets_SKILL.md) | Structured tickets with acceptance criteria, edge cases, and effort estimates |
-| [Context Page](../Skills/context-page_SKILL.md) | PRD-equivalent handover doc: executive summary, business logic, MVP stages |
-| [Sales Talk Track](../Skills/sales-talk-track_SKILL.md) | Spoken pitch covering the customer problem, the solution, and a product walkthrough |
+| [AI Prototyping](../../Skills/ai-prototyping_SKILL.md) | 4 prototype arguments + 1 recommended prompt, copy-paste ready for v0, Bolt, or Lovable |
+| [Linear Ticket Writer](../../Skills/linear-tickets_SKILL.md) | Structured tickets with acceptance criteria, edge cases, and effort estimates |
+| [Context Page](../../Skills/context-page_SKILL.md) | PRD-equivalent handover doc: executive summary, business logic, MVP stages |
+| [Sales Talk Track](../../Skills/sales-talk-track_SKILL.md) | Spoken pitch covering the customer problem, the solution, and a product walkthrough |
 
 **Parallel execution:** All four skills run simultaneously. A task with status `Waiting for Approval` is skipped until a human confirms it.
 
