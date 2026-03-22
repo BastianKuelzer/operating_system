@@ -34,6 +34,12 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 |-------|-------------|-----|------------------------|
 | 🎙️ [**Customer Voice**](./Skills/customer-voice_SKILL.md) | Answers product questions from a Notion-indexed feedback database (Fireflies, Slack, Email). Optional: paste raw sources for inline extraction at query time. | Turns scattered customer feedback into structured evidence in seconds | 0 quotes were hallucinated, 0 customer feedback is wrongly clustered, 0 customer feedback is missing |
 
+**📈 Business Development**
+
+| Skill | Description | Why | Performance Evaluation |
+|-------|-------------|-----|------------------------|
+| 🔎 [**Competitor Research**](./Skills/competitor-research_SKILL.md) | Pulls competitor data from a linked Google Sheet across three arguments: Inspiration (features + screenshots), Pricing (models + tiers), and Customers (who uses them and why). | Surfaces structured competitor intelligence in seconds without manual copy-paste | 0 data points hallucinated, 0 fields inferred or enriched beyond the source |
+
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
 
 ---
