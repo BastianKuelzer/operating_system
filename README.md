@@ -87,3 +87,9 @@ Several MCP servers for Notion, Fireflies, Slack, Linear, and Figma also need to
 
 **How it works:** `setup.sh` creates symlinks from `~/.claude/skills/` and `.claude/commands/` to the `Skills/` folder in this repo. Updates pushed to a skill file are instantly live — no re-setup needed.
 
+### Libraries
+
+| Library | Description | Install |
+|---------|-------------|---------|
+| 🌐 [**agent-browser**](https://www.npmjs.com/package/agent-browser) (Vercel) | Browser automation for AI agents — navigate pages, fill forms, click buttons, take screenshots, and scrape data from websites. | `npx agent-browser` |
+
