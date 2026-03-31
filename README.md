@@ -40,6 +40,7 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 |-------|-------------|-----|------------------------|
 | 🔎 [**Competitor Research**](./Skills/competitor-research_SKILL.md) | Pulls competitor data from a linked Google Sheet across three arguments: Inspiration (features + screenshots), Pricing (models + tiers), and Customers (who uses them and why). | Surfaces structured competitor intelligence in seconds instead of days | 0 data points hallucinated, 0 fields inferred or enriched beyond the source |
 | 🗣️ [**Sales Talk Track**](./Skills/sales-talk-track_SKILL.md) | Creates a Sales talk track when launching a new product or feature — covers the customer problem, the solution, and a step-by-step product walkthrough in plain spoken language. | Gives Sales a ready-to-use pitch the moment something ships, no prep needed | 0 jargon without explanation |
+| 🧐 [**Executive Review**](./Skills/executive-review_SKILL.md) | Pressure-tests any idea, feature, or plan through three lenses: simplicity, speed, and strategic fit — ending with a clear thumbs up or thumbs down against three hard criteria. | Catches overcomplicated or misaligned work before it ships or gets presented up | 0 thumbs up given without all three criteria met |
 
 > Each skill lives in its own `.md` file and can be triggered directly in Claude Code or any other LLM.
 
