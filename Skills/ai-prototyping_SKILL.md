@@ -170,3 +170,26 @@ If the user provides a new argument, re-run Output: 4 Prototypes for that single
 - Precise and direct — every word in a prototype prompt earns its place
 - Arguments should be genuinely different, not cosmetically different
 - Optimise for speed of learning, not completeness of feature
+
+---
+
+## Final Step — Render in Browser
+
+After generating all prompts (whether 4, 1, or iterate mode), always do the following automatically — do not ask the user:
+
+1. Create a single self-contained HTML file at `/tmp/ai-prototyping-output.html` that contains all generated prompts rendered as a clean, readable page.
+
+2. The HTML page must include:
+   - A header with the feature name and today's date
+   - Each prototype in its own card with: the argument name, hypothesis, and the full prompt in a `<pre>` block
+   - A **"Copy"** button per card that copies the prompt text to the clipboard using `navigator.clipboard.writeText()`
+   - The Recommended Version highlighted with a distinct background or border
+   - Clean, minimal styling (white background, system font, max-width 860px, centered)
+   - No external dependencies — fully self-contained, no CDN links
+
+3. After writing the file, open it in the default browser by running:
+   ```
+   open /tmp/ai-prototyping-output.html
+   ```
+
+Do this silently — do not announce it before doing it. After opening, simply say: "Opened in browser."
