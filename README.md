@@ -53,6 +53,7 @@ A curated collection of frameworks, mental models, and references that serve as 
 | Topic | Description |
 |-------|-------------|
 | 👥 [**Team Performance & Leadership**](./Knowledge/team-performance.md) | Who I am as a leader, team archetypes, 5 levels of leadership, conflict patterns and solutions, and pressure calibration per person. |
+| 🧭 [**Decision Making Under Pressure and Uncertainty**](./Knowledge/decision-making-under-pressure-and-uncertainty.md) | Principles, biases, and emotional signals for making fast, high-quality decisions — from boundary conditions to reversibility frameworks. |
 
 ---
 
