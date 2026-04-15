@@ -1,0 +1,63 @@
+# Claude Navigation Guide
+
+This file is your map to everything in this operating system. Find the right skill, knowledge file, or project below — each entry is one sentence so you know exactly what lives where.
+
+---
+
+## Skills
+
+Invoke skills with `/skill-name` in Claude Code. Each skill file contains full instructions, inputs, and output format.
+
+### Product Manager
+| File | What it does |
+|------|-------------|
+| [linear-tickets_SKILL.md](./Skills/linear-tickets_SKILL.md) | Creates structured Linear tickets (New Feature, Bug, Testing, Feedback) using standardized templates. |
+| [ticket-challenger_SKILL.md](./Skills/ticket-challenger_SKILL.md) | Reviews a Linear ticket as a senior product strategist — challenges scope, defers non-essentials, confirms readiness. |
+| [ticket-visualizer_SKILL.md](./Skills/ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, and edge cases. |
+| [context-page_SKILL.md](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log (General, Details, Stages) as a PRD-equivalent handover to engineering. |
+| [backlog-sorting_SKILL.md](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog using the Notion priority table with deterministic ordering rules. |
+
+### Designer
+| File | What it does |
+|------|-------------|
+| [figma_SKILL.md](./Skills/figma_SKILL.md) | Translates tickets into Figma design briefs or creates frames and components directly via MCP for dev handoff. |
+| [ai-prototyping_SKILL.md](./Skills/ai-prototyping_SKILL.md) | Turns any input into copy-paste-ready prototype prompts for v0, Google AI Studio, Bolt, or Lovable. |
+
+### User Researcher
+| File | What it does |
+|------|-------------|
+| [customer-voice_SKILL.md](./Skills/customer-voice_SKILL.md) | Answers product questions from a Notion-indexed feedback database (Fireflies, Slack, Email). |
+
+### Business Development
+| File | What it does |
+|------|-------------|
+| [competitor-research_SKILL.md](./Skills/competitor-research_SKILL.md) | Pulls competitor data from a linked Google Sheet across inspiration, pricing, and customer arguments. |
+| [sales-talk-track_SKILL.md](./Skills/sales-talk-track_SKILL.md) | Creates a ready-to-use sales pitch covering the customer problem, solution, and product walkthrough. |
+| [executive-review_SKILL.md](./Skills/executive-review_SKILL.md) | Pressure-tests any idea or plan through simplicity, speed, and strategic fit — ends with a clear thumbs up or down. |
+
+### Utility
+| File | What it does |
+|------|-------------|
+| [clear-desktop_SKILL.md](./Skills/clear-desktop_SKILL.md) | Moves all screenshots from the Desktop to the Trash. |
+
+---
+
+## Knowledge
+
+Curated frameworks and mental models — use these as context when reasoning about leadership, decisions, and strategy.
+
+| File | What it covers |
+|------|---------------|
+| [Knowledge/team-performance.md](./Knowledge/team-performance.md) | Leadership identity, team archetypes, 5 levels of leadership, conflict patterns, and pressure calibration per person. |
+| [Knowledge/decision-making-under-pressure-and-uncertainty.md](./Knowledge/decision-making-under-pressure-and-uncertainty.md) | 15 principles, 8 biases to avoid, and emotional signals for making fast, high-quality decisions under uncertainty. |
+
+---
+
+## Projects
+
+Active and template projects — each folder contains its own README with full context.
+
+| Folder | What it is |
+|--------|-----------|
+| [Projects/Project_Fusion/](./Projects/Project_Fusion/) | A commercial product coaching framework built around six core leverages that separate great PMs from good ones. |
+| [Projects/Agent Pipeline Template - New Products/](./Projects/Agent%20Pipeline%20Template%20-%20New%20Products/) | A 6-skill pipeline that turns a new product idea into customer evidence, a prototype, tickets, a handover doc, and a sales pitch. |

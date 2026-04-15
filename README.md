@@ -4,6 +4,12 @@ A personal AI-powered operating system combining autonomous agents, curated know
 
 ---
 
+## 🗺️ Navigation
+
+A [CLAUDE.md](./CLAUDE.md) file lives at the root of this repo — it maps every skill, knowledge file, and project with a one-sentence description so any agent or team member knows exactly where to find what.
+
+---
+
 ## 👥 My AI Minions — Skills & Autonomous Agents
 
 A squad of AI agents that get work done, learn from curated knowledge, and improve over time. + My human team can use this repo, add their own skills and knowledge, and run the same AI team alongside me.  
