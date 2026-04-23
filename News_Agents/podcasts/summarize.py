@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Energy Unplugged by Aurora — Daily Podcast Summarizer
-Fetches new episodes, transcribes audio, and saves summaries as markdown files.
+Energy Podcast Summarizer
+Fetches new episodes from configured podcasts, transcribes, and saves markdown summaries.
 
-Requirements: pip install feedparser requests anthropic openai
-API keys needed: ANTHROPIC_API_KEY, OPENAI_API_KEY (for transcription)
+Requirements: pip install feedparser requests anthropic openai-whisper
+API key needed: ANTHROPIC_API_KEY
 """
 
 import json
@@ -18,25 +18,38 @@ import anthropic
 import feedparser
 import requests
 
-RSS_FEED = "https://feed.podbean.com/aercommercial/feed.xml"
 BASE_DIR = Path(__file__).parent
-SUMMARIES_DIR = BASE_DIR / "summaries"
-TRANSCRIPTS_DIR = BASE_DIR / "transcripts"
-STATE_FILE = BASE_DIR / ".state.json"
+
+PODCASTS = {
+    "energy-unplugged": {
+        "name": "Energy Unplugged by Aurora",
+        "rss": "https://feed.podbean.com/aercommercial/feed.xml",
+    },
+    "redefining-energy": {
+        "name": "Redefining Energy",
+        "rss": "https://www.spreaker.com/show/3170008/episodes/feed",
+    },
+    "energy-gang": {
+        "name": "The Energy Gang",
+        "rss": "https://rss.art19.com/the-energy-gang",
+    },
+}
 
 
-def load_state() -> dict:
-    if STATE_FILE.exists():
-        return json.loads(STATE_FILE.read_text())
+def load_state(podcast_dir: Path) -> dict:
+    state_file = podcast_dir / ".state.json"
+    if state_file.exists():
+        return json.loads(state_file.read_text())
     return {"processed": []}
 
 
-def save_state(state: dict):
-    STATE_FILE.write_text(json.dumps(state, indent=2))
+def save_state(podcast_dir: Path, state: dict):
+    podcast_dir.mkdir(exist_ok=True)
+    (podcast_dir / ".state.json").write_text(json.dumps(state, indent=2))
 
 
-def fetch_feed() -> list[dict]:
-    feed = feedparser.parse(RSS_FEED)
+def fetch_feed(rss_url: str) -> list[dict]:
+    feed = feedparser.parse(rss_url)
     episodes = []
     for entry in feed.entries:
         audio_url = None
@@ -75,10 +88,9 @@ def download_audio(url: str, dest: Path) -> bool:
 
 
 def transcribe_audio(audio_path: Path) -> str:
-    # Try local Whisper first (free, no API key needed)
     try:
         import whisper
-        print("  Using local Whisper (this may take a few minutes)...")
+        print("  Transcribing with local Whisper...")
         model = whisper.load_model("base")
         result = model.transcribe(str(audio_path))
         return result["text"]
@@ -87,7 +99,6 @@ def transcribe_audio(audio_path: Path) -> str:
     except Exception as e:
         print(f"  Local Whisper failed: {e}")
 
-    # Fall back to OpenAI Whisper API
     api_key = os.environ.get("OPENAI_API_KEY")
     if api_key:
         try:
@@ -107,11 +118,11 @@ def transcribe_audio(audio_path: Path) -> str:
     return ""
 
 
-def summarize(episode: dict, transcript: str, client: anthropic.Anthropic) -> str:
+def summarize(podcast_name: str, episode: dict, transcript: str, client: anthropic.Anthropic) -> str:
     source = "Full transcript" if transcript else "Show notes"
     content = transcript if transcript else episode["description"]
 
-    prompt = f"""You are summarizing an episode of "Energy Unplugged by Aurora", a podcast covering energy markets, renewables, and the energy transition.
+    prompt = f"""You are summarizing an episode of "{podcast_name}", a podcast covering energy markets, renewables, and the energy transition.
 
 Episode title: {episode['title']}
 {source}:
@@ -161,14 +172,18 @@ def parse_date(published: str) -> str:
     return datetime.now().strftime("%Y-%m-%d")
 
 
-def save_summary(episode: dict, summary: str, transcript: str):
-    SUMMARIES_DIR.mkdir(exist_ok=True)
-    TRANSCRIPTS_DIR.mkdir(exist_ok=True)
+def save_files(podcast_dir: Path, podcast_name: str, episode: dict, summary: str, transcript: str):
+    summaries_dir = podcast_dir / "summaries"
+    transcripts_dir = podcast_dir / "transcripts"
+    summaries_dir.mkdir(exist_ok=True)
+    transcripts_dir.mkdir(exist_ok=True)
+
     date_str = parse_date(episode["published"])
     slug = slugify(episode["title"])
 
     summary_md = f"""# {episode['title']}
 
+**Podcast:** {podcast_name}
 **Published:** {episode['published']}
 **Duration:** {episode.get('duration', 'N/A')}
 
@@ -177,15 +192,16 @@ def save_summary(episode: dict, summary: str, transcript: str):
 {summary}
 
 ---
-*Generated {datetime.now().strftime('%Y-%m-%d')} · Energy Unplugged by Aurora*
+*Generated {datetime.now().strftime('%Y-%m-%d')}*
 """
-    summary_path = SUMMARIES_DIR / f"{date_str}-{slug}.md"
+    summary_path = summaries_dir / f"{date_str}-{slug}.md"
     summary_path.write_text(summary_md)
     print(f"  Saved summary → {summary_path.name}")
 
     if transcript:
         transcript_md = f"""# {episode['title']} — Full Transcript
 
+**Podcast:** {podcast_name}
 **Published:** {episode['published']}
 **Duration:** {episode.get('duration', 'N/A')}
 
@@ -193,29 +209,31 @@ def save_summary(episode: dict, summary: str, transcript: str):
 
 {transcript}
 """
-        transcript_path = TRANSCRIPTS_DIR / f"{date_str}-{slug}.md"
+        transcript_path = transcripts_dir / f"{date_str}-{slug}.md"
         transcript_path.write_text(transcript_md)
         print(f"  Saved transcript → {transcript_path.name}")
 
 
-def main():
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M')}] Energy Unplugged summarizer starting...")
+def process_podcast(slug: str, config: dict, client: anthropic.Anthropic):
+    podcast_dir = BASE_DIR / slug
+    print(f"\n{'='*50}")
+    print(f"  {config['name']}")
+    print(f"{'='*50}")
 
-    state = load_state()
+    state = load_state(podcast_dir)
     processed = set(state["processed"])
 
-    episodes = fetch_feed()
+    episodes = fetch_feed(config["rss"])
     new_episodes = [e for e in episodes if e["id"] not in processed]
 
     if not new_episodes:
-        print("No new episodes since last run.")
+        print("  No new episodes.")
         return
 
-    print(f"Found {len(new_episodes)} new episode(s).")
-    client = anthropic.Anthropic()
+    print(f"  Found {len(new_episodes)} new episode(s).")
 
     for episode in new_episodes:
-        print(f"\nProcessing: {episode['title']}")
+        print(f"\n  Processing: {episode['title']}")
         transcript = ""
 
         if episode.get("audio_url"):
@@ -223,23 +241,23 @@ def main():
                 tmp_path = Path(tmp.name)
             print("  Downloading audio...")
             if download_audio(episode["audio_url"], tmp_path):
-                print("  Transcribing with Whisper...")
                 transcript = transcribe_audio(tmp_path)
                 tmp_path.unlink(missing_ok=True)
 
-        if not transcript:
-            print("  Summarizing from show notes...")
-        else:
-            print("  Summarizing transcript...")
-
-        summary = summarize(episode, transcript, client)
-        save_summary(episode, summary, transcript)
+        summary = summarize(config["name"], episode, transcript, client)
+        save_files(podcast_dir, config["name"], episode, summary, transcript)
 
         processed.add(episode["id"])
         state["processed"] = list(processed)
-        save_state(state)
+        save_state(podcast_dir, state)
 
-    print("\nDone.")
+
+def main():
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M')}] Podcast summarizer starting...")
+    client = anthropic.Anthropic()
+    for slug, config in PODCASTS.items():
+        process_podcast(slug, config, client)
+    print("\nAll done.")
 
 
 if __name__ == "__main__":

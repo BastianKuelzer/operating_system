@@ -59,7 +59,7 @@ Autonomous agents that fetch live news sources and generate structured briefings
 
 | Folder | What it does |
 |--------|-------------|
-| [News_Agents/energy-unplugged/](./News_Agents/energy-unplugged/) | Fetches Aurora's Energy Unplugged podcast RSS, transcribes audio with Whisper, and saves Overview/Key Topics/Key Insights summaries per episode. |
+| [News_Agents/podcasts/](./News_Agents/podcasts/) | Monitors three energy podcasts (Energy Unplugged, Redefining Energy, The Energy Gang), transcribes audio with Whisper, and saves Overview/Key Topics/Key Insights summaries per episode into each podcast's own subfolder. |
 | [News_Agents/energate/](./News_Agents/energate/) | Pulls the 15 latest energate messenger articles and generates an English morning briefing (headlines, themes, market watch) saved to ~/Documents/Energate News/. |
 
 ---

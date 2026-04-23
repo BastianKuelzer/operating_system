@@ -78,9 +78,9 @@ Active and past projects built with or managed through this system.
 
 Autonomous news agents that run on a schedule, pull from live sources, and deliver structured briefings — no manual effort after setup.
 
-| Agent | Source | Output | Frequency |
-|-------|--------|--------|-----------|
-| 🎙️ [**Energy Unplugged**](./News_Agents/energy-unplugged/) | Aurora podcast RSS — transcribes audio with Whisper, summarizes with Claude | Markdown summaries in `summaries/` (Overview · Key Topics · Key Insights) | On new episode |
+| Agent | Podcasts | Output | Frequency |
+|-------|----------|--------|-----------|
+| 🎙️ [**Podcast Summarizer**](./News_Agents/podcasts/) | Energy Unplugged by Aurora · Redefining Energy · The Energy Gang — downloads audio, transcribes with Whisper, summarizes with Claude | Markdown summaries per podcast in `summaries/` (Overview · Key Topics · Key Insights) | On new episode |
 | 📰 [**Energate News**](./News_Agents/energate/) | energate messenger RSS — German energy trade publication | English morning briefing saved to `~/Documents/Energate News/` | Daily at 07:30 |
 
 Both agents require `ANTHROPIC_API_KEY`. See each agent's README for setup and scheduling instructions.
