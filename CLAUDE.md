@@ -53,6 +53,17 @@ Curated frameworks and mental models — use these as context when reasoning abo
 
 ---
 
+## News Agents
+
+Autonomous agents that fetch live news sources and generate structured briefings on a schedule.
+
+| Folder | What it does |
+|--------|-------------|
+| [News_Agents/energy-unplugged/](./News_Agents/energy-unplugged/) | Fetches Aurora's Energy Unplugged podcast RSS, transcribes audio with Whisper, and saves Overview/Key Topics/Key Insights summaries per episode. |
+| [News_Agents/energate/](./News_Agents/energate/) | Pulls the 15 latest energate messenger articles and generates an English morning briefing (headlines, themes, market watch) saved to ~/Documents/Energate News/. |
+
+---
+
 ## Projects
 
 Active and template projects — each folder contains its own README with full context.

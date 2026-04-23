@@ -74,6 +74,19 @@ Active and past projects built with or managed through this system.
 
 ---
 
+## 📰 News Briefung
+
+Autonomous news agents that run on a schedule, pull from live sources, and deliver structured briefings — no manual effort after setup.
+
+| Agent | Source | Output | Frequency |
+|-------|--------|--------|-----------|
+| 🎙️ [**Energy Unplugged**](./News_Agents/energy-unplugged/) | Aurora podcast RSS — transcribes audio with Whisper, summarizes with Claude | Markdown summaries in `summaries/` (Overview · Key Topics · Key Insights) | On new episode |
+| 📰 [**Energate News**](./News_Agents/energate/) | energate messenger RSS — German energy trade publication | English morning briefing saved to `~/Documents/Energate News/` | Daily at 07:30 |
+
+Both agents require `ANTHROPIC_API_KEY`. See each agent's README for setup and scheduling instructions.
+
+---
+
 ## 💻 Setup on a new machine
 
 Clone the repo anywhere you like, then run the setup script once:

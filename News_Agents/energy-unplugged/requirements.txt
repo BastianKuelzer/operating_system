@@ -1,0 +1,5 @@
+feedparser
+requests
+anthropic
+openai-whisper
+openai
