@@ -50,6 +50,7 @@ Curated frameworks and mental models — use these as context when reasoning abo
 |------|---------------|
 | [Knowledge/team-performance.md](./Knowledge/team-performance.md) | Leadership identity, team archetypes, 5 levels of leadership, conflict patterns, and pressure calibration per person. |
 | [Knowledge/decision-making-under-pressure-and-uncertainty.md](./Knowledge/decision-making-under-pressure-and-uncertainty.md) | 15 principles, 8 biases to avoid, and emotional signals for making fast, high-quality decisions under uncertainty. |
+| [Knowledge/kpis-on-different-layers.md](./Knowledge/kpis-on-different-layers.md) | 7-step framework for defining a product area's KPIs across supervisor, PM, and solution layers — includes qualitative description template, scorecard categories, and worked examples. |
 
 ---
 
