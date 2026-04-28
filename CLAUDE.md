@@ -15,6 +15,7 @@ Invoke skills with `/skill-name` in Claude Code. Each skill file contains full i
 | [ticket-challenger_SKILL.md](./Skills/ticket-challenger_SKILL.md) | Reviews a Linear ticket as a senior product strategist — challenges scope, defers non-essentials, confirms readiness. |
 | [ticket-visualizer_SKILL.md](./Skills/ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, and edge cases. |
 | [context-page_SKILL.md](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log (General, Details, Stages) as a PRD-equivalent handover to engineering. |
+| [prd_SKILL.md](./Skills/prd_SKILL.md) | Generates a code-grounded PRD by reading the actual source files — creates a single source of truth for each feature that is never edited by humans and drives all stakeholder communications: roadmap entries, release notes, sales talk tracks, and more. Run after every software deployment to keep it current. |
 | [backlog-sorting_SKILL.md](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog using the Notion priority table with deterministic ordering rules. |
 
 ### Designer
