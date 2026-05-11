@@ -17,6 +17,7 @@ Invoke skills with `/skill-name` in Claude Code. Each skill file contains full i
 | [context-page_SKILL.md](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log (General, Details, Stages) as a PRD-equivalent handover to engineering. |
 | [prd_SKILL.md](./Skills/prd_SKILL.md) | Generates a code-grounded PRD by reading the actual source files — creates a single source of truth for each feature that is never edited by humans and drives all stakeholder communications: roadmap entries, release notes, sales talk tracks, and more. Run after every software deployment to keep it current. |
 | [backlog-sorting_SKILL.md](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog using the Notion priority table with deterministic ordering rules. |
+| [planning_SKILL.md](./Skills/planning_SKILL.md) | Turns an idea, feature, or initiative into a one-page planning doc using a fixed 7-section template (Problem, Hypothesis, Customer Value, Reach, Success Metric, Rollout, Capacity) — data-backed and decision-ready. |
 
 ### Designer
 | File | What it does |
