@@ -32,7 +32,9 @@ Example: "Users are turning off notifications at a high rate. 8% of users muted 
 <What the customer gets when this is solved. Quantify in financials or time saved where possible (e.g. "saves €X/month per customer", "removes 2 hours/week of manual work"). If non-financial, state the concrete user benefit.>
 
 ## 4. Reach
-<How many customers / users / accounts are affected. Absolute number AND % of base. e.g. "~1,200 users (18% of MAU)".>
+**Affected:** <How many customers / users / accounts are affected. Absolute number AND % of base. e.g. "~1,200 users (18% of MAU)".>
+**Install base:** <Total current customers as an absolute number. e.g. "6,500 customers".>
+**Target market:** <Total addressable market as an absolute number. e.g. "85,000 accounts in TAM".>
 
 ## 5. Success Metric
 **Primary:** <specific metric with threshold, e.g. "Mute rate drops to ≤ 15% within 4 weeks of rollout.">
