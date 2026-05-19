@@ -25,10 +25,11 @@ Invoke skills with `/skill-name` in Claude Code. Each skill file contains full i
 | [figma_SKILL.md](./Skills/figma_SKILL.md) | Translates tickets into Figma design briefs or creates frames and components directly via MCP for dev handoff. |
 | [ai-prototyping_SKILL.md](./Skills/ai-prototyping_SKILL.md) | Turns any input into copy-paste-ready prototype prompts for v0, Google AI Studio, Bolt, or Lovable. |
 
-### User Researcher
+### Analyst
 | File | What it does |
 |------|-------------|
 | [customer-voice_SKILL.md](./Skills/customer-voice_SKILL.md) | Answers product questions from a Notion-indexed feedback database (Fireflies, Slack, Email). |
+| [insight-wow_SKILL.md](./Skills/insight-wow_SKILL.md) | Generates a multi-cadence (daily, WoW, MoM) PostHog usage report for any saved insight — mirrors the saved filter (incl. filterTestAccounts), breaks down by customer, optional feature-flag overlay, and renders a browser dashboard. |
 
 ### Business Development
 | File | What it does |
