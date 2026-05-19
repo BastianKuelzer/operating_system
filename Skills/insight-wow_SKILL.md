@@ -1,6 +1,6 @@
 ---
 name: insight-wow
-description: Generate a multi-cadence (daily, week-over-week, month-over-month) usage report for any PostHog insight by mirroring the insight's saved filter (including filterTestAccounts) and running rolling SQL with per-customer breakdown and optional feature-flag overlay. Optionally takes a target (e.g. "80% WoW usage", "≥ 6 companies/week", "70% retention MoM") and analyses the gap. Optionally renders a self-contained HTML dashboard for browser viewing. Use when the user asks for "WoW usage", "week-over-week", "DoD", "MoM", "monthly usage", "how is X being used", "are we hitting our target", or names a PostHog insight/dashboard and wants a usage comparison. Triggers on "/insight-wow", "WoW for <insight>", "monthly usage of X", "show me adoption of <insight>", "is <insight> on track for <target>", "render dashboard for <insight>".
+description: Generate a multi-cadence (daily, week-over-week, month-over-month) usage report for any PostHog insight by mirroring the insight's saved filter (including filterTestAccounts) and running rolling SQL with per-customer breakdown and optional feature-flag overlay. Always asks the user for a target (e.g. "80% WoW usage", "≥ 6 companies/week", "70% retention MoM") before running and reports the gap. Always renders a self-contained HTML dashboard to the Desktop and opens it in the browser. Use when the user asks for "WoW usage", "week-over-week", "DoD", "MoM", "monthly usage", "how is X being used", "are we hitting our target", or names a PostHog insight/dashboard and wants a usage comparison. Triggers on "/insight-wow", "WoW for <insight>", "monthly usage of X", "show me adoption of <insight>", "is <insight> on track for <target>".
 ---
 
 # Insight WoW
@@ -24,9 +24,18 @@ The report mirrors the insight's own filter **including `filterTestAccounts`**, 
 
 If the user specifies a cadence ("just WoW", "only daily", "MoM only"), produce only that section. Otherwise produce **all three** by default.
 
-## Targets (optional)
+## Targets (required — always ask first)
 
-The user may specify a target alongside the insight, e.g. "WoW 80%", "≥ 6 companies / week", "70% retention MoM", "target 5 active users per week". Parse it into one of three target types:
+**Before running any queries, always ask the user for a target.** A usage report without a target is just numbers — the gap analysis is what makes it actionable. Do not skip this step, even if the user only asked for "WoW for <insight>".
+
+Phrase the question concretely, offering the three target types so the user can pick:
+
+> "Before I run this, what's the target?
+> - **Reach %** — e.g. *80% of launch customers active this week* (needs a feature flag)
+> - **Retention %** — e.g. *keep 70% of last week's active users*
+> - **Absolute threshold** — e.g. *≥ 6 active companies this week*, *≥ 50 sessions*"
+
+Parse the response into one of three target types:
 
 | Target type | Example phrasing | What it means | Required input |
 |---|---|---|---|
@@ -38,7 +47,7 @@ The user may specify a target alongside the insight, e.g. "WoW 80%", "≥ 6 comp
 
 If multiple targets are given (e.g. "80% WoW reach AND ≥ 50 sessions"), evaluate all of them.
 
-If no target is given, skip the gap analysis entirely — do not invent one.
+If the user explicitly declines to set a target ("just show me the numbers", "no target"), proceed without one and skip the gap-analysis section — but only after asking.
 
 ## How to run
 
@@ -264,9 +273,9 @@ Report:
 - Which launch customers have **not** used it at all in 30 days.
 - Any non-launch customers seen in the data — but split them: were they `flag=true` (real access, possibly historical from before a rollback) or `flag=false` (URL pokes, no real access)?
 
-### 11. Optional — target gap analysis
+### 11. Target gap analysis
 
-Only run this if the user provided a target. Compute one row per (target × cadence). Skip cadences the target doesn't apply to.
+Compute one row per (target × cadence) using the target you collected in step 0. Skip cadences the target doesn't apply to. (If the user explicitly declined to set a target, skip this section entirely.)
 
 **Reach %** (requires feature flag):
 
@@ -390,9 +399,9 @@ Notes:
 
 If running for **multiple insights** in one go, repeat the full block per insight, separated by a horizontal rule. Do not produce a combined summary unless asked.
 
-### 13. Optional — render a browser dashboard
+### 13. Render the browser dashboard (always)
 
-Trigger this **additionally** (not instead of the markdown report) when the user says any of: "render", "dashboard", "browser", "html", "visual", "show me a chart", "make a page", "create a dashboard".
+After the markdown report is delivered, **always** write the HTML dashboard and open it. This is not optional — every run ends with both a markdown report and a browser-rendered dashboard.
 
 Output a single self-contained HTML file at `~/Desktop/insight-wow-dashboard.html` (overwrites any prior render — the user can rename to keep history). After writing, open it with `open <path>` on macOS.
 
@@ -664,10 +673,10 @@ open ~/Desktop/insight-wow-dashboard.html
 - **Don't claim "0 this week is a drop"** if today is early in the week — call out that the window is still active. The PostHog `execute-sql` response also adds a system reminder about this; respect it but still surface the comparison.
 - **Verify launch customers against the live flag definition.** Don't rely on memory — flag rollouts change. Use `feature-flag-get-definition` to get the current rollout list.
 - **Run the four SQL queries in parallel** (daily, WoW, MoM, per-customer) — they're independent and parallel cuts latency 4×. If a target is given, add the retention SQL to the parallel batch. If a flag is in play, also add the flag-overlay query.
-- **Always state the parsed target interpretation explicitly.** If the user said "80% WoW" without specifying, write "interpreting as 80% of launch customers active per week" (or whichever default you applied) so they can correct you.
+- **Always ask for a target before running.** Don't skip this step — even a one-line "what's the target?" prompt before queries is mandatory. State the parsed interpretation explicitly so the user can correct you (e.g. "interpreting as 80% of launch customers active per week").
 - **Reach % requires the flag.** If the user asks for "80% reach" but the insight has no associated feature flag, ask which population to measure against (all paying customers? a specific list?) instead of guessing.
 - **Don't penalise an active period.** If today is mid-week / mid-month, flag the in-progress window in the status column ("⏳ in progress") rather than ❌ — partial-period numbers extrapolated to a full-period target are misleading.
-- **Browser dashboard is additive, not a replacement.** When the user asks to "render", "show a dashboard", or "see it in the browser", produce the markdown report first (as always), then write the HTML to `~/Desktop/insight-wow-dashboard.html` and `open` it. Reuse the template in step 13 — don't invent new visual styles per request, the design language is fixed.
+- **Always render the browser dashboard.** Every run ends with both a markdown report and an HTML dashboard written to `~/Desktop/insight-wow-dashboard.html` and opened via `open`. Reuse the template in step 13 — don't invent new visual styles per request, the design language is fixed.
 
 ## Project-specific defaults (recommended)
 
