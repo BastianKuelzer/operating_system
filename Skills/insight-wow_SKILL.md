@@ -13,7 +13,7 @@ Produce a usage report for one or more PostHog insights at three cadences:
 
 The report mirrors the insight's own filter **including `filterTestAccounts`**, adds a per-customer breakdown the saved insight doesn't show, and (if a feature flag gates the feature) overlays flag-value to distinguish real feature use from URL pokes. Always reports **unique sessions, unique users, unique companies, and events**. Never invent numbers — if data is missing or zero, say so.
 
-> **Critical lesson learned (2026-05):** an earlier version of this skill told you to skip / loosen `filterTestAccounts` because it "over-filters." That was wrong. At ecoplanet the test-account filter strips ecoplanet staff using customer accounts (support, PMs, BDs) — without it, numbers come out **10–30× too high**. Always mirror the saved insight's full filter and spot-check against the UI before reporting.
+> **Critical lesson:** never skip or loosen `filterTestAccounts`. If your team's filter strips internal staff who routinely work inside customer accounts (support, PMs, BDs), bypassing it can inflate numbers **10–30×**. Always mirror the saved insight's full filter and spot-check against the UI before reporting.
 
 ## When to use
 
@@ -68,7 +68,7 @@ Then call `insight-get` on the best match to get the authoritative query. **Alwa
 For each EventsNode in the series, capture:
 
 - **Event name** — read the `event` field. **If it's missing/null, the insight counts ALL events** matching the other filters (not just `$pageview`). Mirror that — do not add a `$pageview` filter the saved insight doesn't have.
-- **URL filter** — most commonly `$current_url icontains '<value>'`. Capture the value verbatim (e.g. `/portfolio`, `mengenplanung`).
+- **URL filter** — most commonly `$current_url icontains '<value>'`. Capture the value verbatim (e.g. `/checkout`, `dashboard`).
 - **Group type index** — usually `0` (company) on the `unique_group` series.
 - **`filterTestAccounts`** — read this from `query.source`. If `true`, you **must** mirror it via SQL (step 3). Do not skip it.
 
@@ -82,7 +82,7 @@ If `filterTestAccounts: true`, fetch the project's filter definition:
 SELECT test_account_filters FROM system.teams WHERE id = <team_id>
 ```
 
-(Ecoplanet team id is **15527**.) The result is a JSON array of filter clauses. Translate **every** clause into SQL — order doesn't matter; the filter is conjunctive. Typical clause types you'll encounter at ecoplanet:
+Find your team id at the bottom of the PostHog URL when logged in, or via `SELECT id, name FROM system.teams`. The result is a JSON array of filter clauses. Translate **every** clause into SQL — order doesn't matter; the filter is conjunctive. Typical clause types you'll encounter:
 
 | Clause shape | SQL translation |
 |---|---|
@@ -130,7 +130,7 @@ WITH excluded_companies AS (
 ),
 excluded_orgs AS (
   SELECT DISTINCT key FROM groups
-  WHERE index = 1 AND properties.name ILIKE '%coplanet%'
+  WHERE index = 1 AND properties.name ILIKE '%<org_exclude_substring>%'
   -- mirror any group_type_index=1 not_icontains filters here
 )
 SELECT
@@ -145,18 +145,15 @@ WHERE e.timestamp > now() - INTERVAL 14 DAY
   -- saved insight filters:
   AND e.properties.<url_property> ILIKE '%<url_value>%'
   -- AND e.event = '<event_from_insight>'  -- omit entirely if insight has no event filter
-  -- test_account_filters (when filterTestAccounts: true):
-  AND e.properties.$host ILIKE '%app.ecoplanet.tech%'
+  -- test_account_filters (when filterTestAccounts: true) — derived from step 3:
+  AND e.properties.$host ILIKE '%<your_prod_host>%'
   AND coalesce(e.properties.$ip, '') != '<excluded_ip>'
   AND coalesce(e.properties.$user_id, '') != '<excluded_user_id>'
-  AND coalesce(e.properties.email, '') NOT ILIKE '%ecoplanet%'
+  AND coalesce(e.properties.email, '') NOT ILIKE '%<internal_email_substring>%'
   AND e.person.properties.email IS NOT NULL AND e.person.properties.email != ''
-  AND e.person.properties.email NOT ILIKE '%ecoplanet%'
+  AND e.person.properties.email NOT ILIKE '%<internal_email_substring>%'
   AND e.person.properties.email NOT ILIKE '%test%'
-  AND e.person.properties.email NOT ILIKE '%web.de%'
-  AND e.person.properties.email NOT ILIKE '%zipp%'
-  AND e.person.properties.email != 'metrics@posthog.com'
-  AND e.person.properties.email NOT ILIKE '%referencevalues@posthog.com%'
+  -- add one NOT ILIKE per email substring listed in test_account_filters
   AND e.$group_0 NOT IN (SELECT key FROM excluded_companies)
   AND e.$group_1 NOT IN (SELECT key FROM excluded_orgs)
 GROUP BY day
@@ -386,7 +383,7 @@ Use:
 
 Notes:
 - <1–3 bullets on what stands out: daily spikes/drops, deep vs shallow engagement, new vs returning customers, adoption gaps vs the rollout list, anything unexpected.>
-- <If filterTestAccounts: false on the saved insight but the user is interested in real customer use, suggest applying the project's test-account filter — at ecoplanet, internal-staff activity is the dominant signal otherwise.>
+- <If filterTestAccounts: false on the saved insight but the user is interested in real customer use, suggest applying the project's test-account filter — internal-staff activity often dominates the signal otherwise.>
 - <Flag today's date and note if the current week/month bucket is still active.>
 - <If a flag rollback is visible in the data (companies with flag=true history then flag=false), call it out and link to the flag's `updated_at`.>
 ```
@@ -630,7 +627,7 @@ Object.entries(DATA).forEach(([id, d]) => buildChart(id, d));
 
 - `{{title}}` → e.g. *"Load Planning & Portfolio — Usage Report"*
 - `{{date}}` → today as `YYYY-MM-DD`; `{{tz}}` → `CEST`/`UTC`
-- `{{project_name}}` / `{{project_id}}` → e.g. *"ecoplanet"* / `15527`
+- `{{project_name}}` / `{{project_id}}` → the PostHog project name and numeric id
 - `{{on_off}}` → `ON` or `OFF` depending on `filterTestAccounts`
 - `{{flag_key}}` / `{{rollout_count}}` → if a flag is in play
 - `{{features[]}}` → one entry per insight, with `name`, `active_this_week`, `reach_pct`
@@ -653,7 +650,7 @@ open ~/Desktop/insight-wow-dashboard.html
 
 ## Hard rules
 
-- **Mirror `filterTestAccounts` when set on the saved insight.** Do not skip or loosen it — at ecoplanet, internal-staff usage is 10–30× of real customer traffic, and stripping it is the whole point of the filter. Read `test_account_filters` from `system.teams` and translate every clause to SQL.
+- **Mirror `filterTestAccounts` when set on the saved insight.** Do not skip or loosen it — in projects where staff routinely act inside customer accounts, internal-staff usage can be 10–30× of real customer traffic, and stripping it is the whole point of the filter. Read `test_account_filters` from `system.teams` and translate every clause to SQL.
 - **No event filter ≠ `$pageview` filter.** If the saved insight has no `event` field on its EventsNode, mirror that — count ALL events on the URL, not just pageviews. Label the count column "Events", not "Pageviews."
 - **Spot-check one day against the UI before producing the full report.** If the spot-check doesn't match, your filter translation is wrong. Fix it before delivering numbers.
 - **Always use rolling windows** (`now() - INTERVAL N DAY`). Never use `toStartOfWeek` or `toStartOfMonth` for the headline numbers — they split the current period mid-stream.
@@ -662,7 +659,7 @@ open ~/Desktop/insight-wow-dashboard.html
 - **Group table uses `index`, not `group_type_index`.** Filter with `WHERE index = 0` for company-level groups.
 - **Feature-flag property keys need bracket notation:** `properties['$feature/<flag-key>']` — dot notation breaks on hyphens and slashes. Compare against the string `'true'`, not boolean.
 - **`$feature/<key>` is a capture-time value.** A flag rollback (adding/removing customers) creates a "before/after" split in the data — old events keep their old value. Check the flag's `version` and `updated_at` to interpret this.
-- **One flag can gate multiple features.** Don't assume 1:1 mapping by name — at ecoplanet, `measure-simulation-load-planning` gates BOTH Load Planning and Portfolio. Ask if uncertain.
+- **One flag can gate multiple features.** Don't assume 1:1 mapping by name — a single flag often gates several related URLs/features. Ask if uncertain.
 - **PostHog captures `$pageview` regardless of how the flag evaluates.** Companies showing up on a URL filter aren't necessarily using the feature — they may have hit the URL and gotten an empty state / redirect. Use `properties['$feature/<flag>'] = 'true'` to count real flag-enabled use.
 - **Don't claim "0 this week is a drop"** if today is early in the week — call out that the window is still active. The PostHog `execute-sql` response also adds a system reminder about this; respect it but still surface the comparison.
 - **Verify launch customers against the live flag definition.** Don't rely on memory — flag rollouts change. Use `feature-flag-get-definition` to get the current rollout list.
@@ -672,31 +669,33 @@ open ~/Desktop/insight-wow-dashboard.html
 - **Don't penalise an active period.** If today is mid-week / mid-month, flag the in-progress window in the status column ("⏳ in progress") rather than ❌ — partial-period numbers extrapolated to a full-period target are misleading.
 - **Browser dashboard is additive, not a replacement.** When the user asks to "render", "show a dashboard", or "see it in the browser", produce the markdown report first (as always), then write the HTML to `~/Desktop/insight-wow-dashboard.html` and `open` it. Reuse the template in step 13 — don't invent new visual styles per request, the design language is fixed.
 
-## Defaults for known insights (ecoplanet, team 15527)
+## Project-specific defaults (recommended)
 
-Pre-baked filters for the two insights this skill was built on. **Re-verify with `insight-get` before relying on them** — saved insight queries get edited.
+The first time you run this skill on a new PostHog project, it pays to cache the inputs you'd otherwise re-derive every call. Add a section like the one below to your local copy of this skill so future runs can jump straight to step 3.
 
-| Insight                      | short_id    | id      | Event filter      | URL filter (icontains) | filterTestAccounts | Related flag |
-|------------------------------|-------------|---------|-------------------|------------------------|---|---|
-| Portfolio Usage Daily Usage  | `B6uU7VE2`  | 8132336 | none (all events) | `/portfolio`           | **true** | `measure-simulation-load-planning` (id 382259) |
-| Load Planning Daily Usage    | `eMMmWHxK`  | 5426872 | none (all events) | `mengenplanung`        | **true** | `measure-simulation-load-planning` (id 382259) |
+### Insight defaults
 
-**Both insights are gated by the same flag.** Portfolio sits on top of the simulation/load-planning machinery, so it shares the rollout.
+For each insight you query repeatedly, record:
 
-### Ecoplanet `test_account_filters` (team 15527, as of 2026-05)
+| Insight name | short_id | id | Event filter | URL filter (icontains) | filterTestAccounts | Related flag |
+|---|---|---|---|---|---|---|
+| `<insight name>` | `<short_id>` | `<id>` | `<event or "none">` | `<url substring>` | `true` / `false` | `<flag key (id)>` |
 
-This is what `filterTestAccounts: true` resolves to at ecoplanet. Refresh by querying `SELECT test_account_filters FROM system.teams WHERE id = 15527` — entries get added/removed.
+**Re-verify with `insight-get` before relying on cached values** — saved insight queries get edited.
 
-- Event: `$host` must contain `app.ecoplanet.tech` (excludes staging, localhost, custom hosts)
-- Event: `$host` must NOT contain `localhost` or `ecoplanet-stage.clients-mvst.co`
-- Event: `$current_url` must NOT contain `localhost`
-- Event: `$ip` is_not `62.245.184.6` (office IP)
-- Event: `$user_id` is_not `18a4574fb6e3ce1f0-0d674077ad7ba3-26021151-75300-18a4574fb6e3ce5d7`
-- Event: `email` not_icontains `ecoplanet`
+### `test_account_filters` snapshot
+
+Cache the project's resolved test-account filter so SQL translation is mechanical. Refresh by querying `SELECT test_account_filters FROM system.teams WHERE id = <team_id>` — entries get added and removed over time.
+
+Typical clauses to expect (the exact set is project-specific):
+
+- Event: `$host` must contain your prod host (excludes staging, localhost, custom hosts)
+- Event: `$host` / `$current_url` must NOT contain `localhost` or staging hosts
+- Event: `$ip` is_not `<office_ip>`
+- Event: `$user_id` is_not `<known_internal_id>`
+- Event/Person: `email` not_icontains `<your-company-domain>`
 - Person: `email` is_set
-- Person: `email` not_icontains: `ecoplanet`, `test`, `web.de`, `zipp`
-- Person: `email` is_not `metrics@posthog.com`, not_icontains `referencevalues@posthog.com`
-- Group (companies, index 0): `name` not_icontains: `Test`, `INNOVAT`, `Demo`
-- Group (organizations, index 1): `name` not_icontains `coplanet`
+- Person: `email` not_icontains: `test`, plus any noisy free-email domains you've blocklisted
+- Group (companies / orgs): `name` not_icontains `Test`, `Demo`, and any internal test-org substrings
 
-The single most impactful clause is **`person.email not_icontains ecoplanet`** — it removes ecoplanet staff acting inside customer accounts, which would otherwise dominate the data.
+The single most impactful clause in most projects is **`person.email not_icontains <your-company-domain>`** — it removes internal staff acting inside customer accounts, which would otherwise dominate the data.
