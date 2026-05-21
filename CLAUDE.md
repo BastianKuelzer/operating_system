@@ -19,6 +19,14 @@ Invoke skills with `/skill-name` in Claude Code. Each skill file contains full i
 | [backlog-sorting_SKILL.md](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog using the Notion priority table with deterministic ordering rules. |
 | [planning_SKILL.md](./Skills/planning_SKILL.md) | Turns an idea, feature, or initiative into a one-page planning doc using a fixed 7-section template (Problem, Hypothesis, Customer Value, Reach, Success Metric, Rollout, Capacity) — data-backed and decision-ready. |
 
+**Product Ops loop** — file the work → see what's on the plate → unblock what's in progress:
+
+| File | What it does |
+|------|-------------|
+| [product-tickets_SKILL.md](./Skills/product-tickets_SKILL.md) | Creates Linear backlog tickets in PROB from any input with a tight What + Acceptance Criteria + Questions to increase quality, matched to an existing project or left unassigned — never invents detail beyond what the user said. |
+| [to-dos_SKILL.md](./Skills/to-dos_SKILL.md) | Summarizes every open PROB ticket (In Progress, Todo, Waiting for Feedback) grouped by status, with the last comment shown inline for any Waiting-for-Feedback ticket. |
+| [solve-in-progress_SKILL.md](./Skills/solve-in-progress_SKILL.md) | Reads every In Progress PROB ticket fully (description + every comment) and prints a concrete proposed solution per ticket directly in the terminal — names the next move, person to ping, or decision to lock. |
+
 ### Designer
 | File | What it does |
 |------|-------------|

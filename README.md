@@ -27,6 +27,14 @@ A squad of AI agents that get work done, learn from curated knowledge, and impro
 | 📋 [**Context Page**](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log with executive summary, business logic, and MVP stages — a PRD-equivalent as handover to engineering. | Writes pages of condensed knowledge for engineering that would otherwise take days | 0 Critical information ignored · 0 Wrong information hallucinated · 0 Incorrect output structure |
 | 📋 [**Backlog Sorting**](./Skills/backlog-sorting_SKILL.md) | Prioritizes the Linear backlog using the Notion priority table with deterministic ordering rules across critical bugs and in/out-of-scope tickets. | Engineering always knows current priorities — one skill call, any time, for todo tickets | ≤ 1 Manual backlog order adjustments needed |
 
+***🔄 Product Ops*** — a 3-skill loop covering the daily PM rhythm: file the work, see what's on the plate, unblock what's in progress.
+
+| Skill | Description | Why | Performance Evaluation |
+|-------|-------------|-----|----------------------------------|
+| 📝 [**Product Tickets**](./Skills/product-tickets_SKILL.md) | Creates Linear backlog tickets from any input (sentence, meeting note, customer quote) with a tight What + Acceptance Criteria + Questions to increase quality, matched to an existing project or left unassigned — never invents detail beyond what the user said. | Drafts ready-to-scope tickets in seconds with no padding or hallucinated scope | ≤ 1 invented detail per 10 tickets · ≤ 1 "what did you mean?" follow-up per 10 tickets |
+| ✅ [**To-Dos**](./Skills/to-dos_SKILL.md) | Summarizes every open ticket (In Progress, Todo, Waiting for Feedback) grouped by status, with the last comment shown inline for any Waiting-for-Feedback ticket so blockers are visible at a glance. | 10-second read of what's on the plate vs. clicking through Linear filters and threads | 0 open tickets missed · last comment correct on 10/10 Waiting-for-Feedback rows |
+| 💡 [**Solve In Progress**](./Skills/solve-in-progress_SKILL.md) | Reads every In Progress ticket fully (description + every comment) and prints a concrete proposed solution per ticket directly in the terminal — names the next move, person to ping, or decision to lock. | Unblocks active work without opening Linear — concrete next moves, not generic "schedule a sync" non-answers | 0 generic non-answers · every recommendation traceable to ticket body or a specific comment |
+
 **🎨 Designer**
 
 | Skill | Description | Why | Performance Evaluation |
