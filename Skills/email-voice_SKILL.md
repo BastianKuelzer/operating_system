@@ -34,6 +34,8 @@ Pair them: state the shared goal ("our goal", "so we can both..."), name the con
 
 **Sign-off words:** use warm ones ("Best,", "Cheers,", "Warmly,", "Warmest regards,") or a sweet-spot phrase ("Looking forward to this,"). Competence-only words ("Regards,", "Sincerely,", "Respectfully,", "Appreciatively,") are acceptable only in strictly formal or legal contexts.
 
+**German emails:** always close with "Viele Grüße" (no comma after it, per German convention), regardless of formality. Use it in place of any other sign-off word when writing in German.
+
 **Avoid (these make the email feel dismissive):** a bare "Hi" with no name, "What's up?", "Been busy?", and sign-offs like "Bye,", "Talk soon,", "See you soon,", or no sign-off at all.
 
 The cues are English; when writing in another language, use the natural equivalents of the same warm and competent words. Keep the tone sincere: at most one exclamation mark, and never stack several cue phrases in one sentence.
