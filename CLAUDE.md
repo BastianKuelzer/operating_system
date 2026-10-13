@@ -13,6 +13,7 @@ Invoke skills with `/skill-name` in Claude Code. Each skill file contains full i
 |------|-------------|
 | [linear-tickets_SKILL.md](./Skills/linear-tickets_SKILL.md) | Creates structured Linear tickets (New Feature, Bug, Testing, Feedback) using standardized templates. |
 | [ticket-challenger_SKILL.md](./Skills/ticket-challenger_SKILL.md) | Reviews a Linear ticket as a senior product strategist — challenges scope, defers non-essentials, confirms readiness. |
+| [textchallenger_SKILL.md](./Skills/textchallenger_SKILL.md) | Challenges reasoning and improves precision, language, and page structure while preserving all content, with a complete HTML comparison for approval before edits and Duden-based checks for German. |
 | [ticket-visualizer_SKILL.md](./Skills/ticket-visualizer_SKILL.md) | Fetches a Linear ticket and generates an interactive HTML diagram of its logic flow, acceptance criteria, and edge cases. |
 | [context-page_SKILL.md](./Skills/context-page_SKILL.md) | Creates a post-prototype decision log (General, Details, Stages) as a PRD-equivalent handover to engineering. |
 | [prd_SKILL.md](./Skills/prd_SKILL.md) | Generates a code-grounded PRD by reading the actual source files — creates a single source of truth for each feature that is never edited by humans and drives all stakeholder communications: roadmap entries, release notes, sales talk tracks, and more. Run after every software deployment to keep it current. |
