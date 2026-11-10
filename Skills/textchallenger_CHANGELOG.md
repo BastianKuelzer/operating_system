@@ -69,3 +69,13 @@ Tracks user-requested changes to `SKILL.md`. Append entries in chronological ord
 **Affected section:** Review before applying.
 
 **Before → after:** A generic compact HTML overview or comparison table → a GitHub-style pull-request review with a status header, Conversation and Files changed tabs, section navigation, split/unified red-green diffs, word highlights, inline review comments, decision badges, and a Review changes summary. Preserve complete batch visibility, exact source access, content coverage, structure proposals, individual and bulk decisions, accepted-only preview, and copy/export ledger. Local UI decisions do not imply source application or agent-retrieved approval.
+
+## 7. Retry HTML review delivery — 2026-11-10
+
+**User request (verbatim)**
+
+> Ändere die skill Datei ab wenn html erst nicht funktioniert, dass du es nochmal probierst damit html funktioniert so wie hier in dem Chat
+
+**Affected section** Review before applying.
+
+**Before → after** The conversational fallback had no explicit retry requirement. Retry the failed HTML step in the same turn, reuse the prepared review, and verify file availability before sharing the link. If the retry fails and HTML delivery remains unavailable, provide the complete review in chat.
